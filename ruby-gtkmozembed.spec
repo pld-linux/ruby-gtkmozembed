@@ -22,7 +22,10 @@ BuildRequires:	ruby-gnome2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Gecko embedded object for Ruby/GNOME2
+Gecko embedded object for Ruby/GNOME2.
+
+%description -l pl
+Wbudowane objekty Gecko dla Ruby/GNOME2.
 
 %prep
 %setup -q 
