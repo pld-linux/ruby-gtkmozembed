@@ -5,8 +5,8 @@
 %define	ruby_archdir	%(ruby -r rbconfig -e 'print Config::CONFIG["archdir"]')
 %define	ruby_rubylibdir	%(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
 %define	ruby_ridir	%(ruby -r rbconfig -e 'include Config; print File.join(CONFIG["datadir"], "ri", CONFIG["ruby_version"], "system")')
-Summary:	GNOME 2 libraries for Ruby
-Summary(pl):	Biblioteki GNOME 2 dla Ruby
+Summary:	Gecko embedded object for Ruby/GNOME2
+Summary(pl):	Osadzony obiekt Gecko dla Ruby/GNOME2
 Name:		ruby-gtkmozembed
 Version:	0.3.1
 Release:	1
@@ -25,7 +25,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Gecko embedded object for Ruby/GNOME2.
 
 %description -l pl
-Wbudowane objekty Gecko dla Ruby/GNOME2.
+Osadzony obiekt Gecko dla Ruby/GNOME2.
 
 %prep
 %setup -q 
