@@ -2,9 +2,6 @@
 # TODO:
 #   - subpackages
 #
-%define	ruby_archdir	%(ruby -r rbconfig -e 'print Config::CONFIG["archdir"]')
-%define	ruby_rubylibdir	%(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
-%define	ruby_ridir	%(ruby -r rbconfig -e 'include Config; print File.join(CONFIG["datadir"], "ri", CONFIG["ruby_version"], "system")')
 Summary:	Gecko embedded object for Ruby/GNOME2
 Summary(pl):	Osadzony obiekt Gecko dla Ruby/GNOME2
 Name:		ruby-gtkmozembed
@@ -17,8 +14,10 @@ Source0:	http://dl.sourceforge.net/ruby-gnome2/%{name}-%{version}.tar.gz
 URL:		http://ruby-gnome2.sourceforge.jp/
 BuildRequires:	mozilla-devel
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.263
 BuildRequires:	ruby-devel
 BuildRequires:	ruby-gnome2
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -28,10 +27,10 @@ Gecko embedded object for Ruby/GNOME2.
 Osadzony obiekt Gecko dla Ruby/GNOME2.
 
 %prep
-%setup -q 
+%setup -q
 
 %build
-find . -name '*.rb' | xargs perl -pi -e "s#local/bin/ruby#bin/ruby#"
+find . -name '*.rb' | xargs sed -i -e '1s,#.*local/bin/ruby,#!%{_bindir}/ruby,'
 ruby extconf.rb
 %{__make}
 
@@ -42,11 +41,11 @@ rm ri/ri/Gtk/cdesc-Gtk.yaml
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{ruby_archdir},%{ruby_rubylibdir},%{ruby_ridir}} 
+install -d $RPM_BUILD_ROOT{%{ruby_archdir},%{ruby_rubylibdir},%{ruby_ridir}}
 %{__make} install \
-				RUBYLIBDIR=$RPM_BUILD_ROOT%{ruby_rubylibdir} \
-				sitearchdir=$RPM_BUILD_ROOT%{ruby_archdir} \
-				RUBYARCHDIR=$RPM_BUILD_ROOT%{ruby_archdir}
+	RUBYLIBDIR=$RPM_BUILD_ROOT%{ruby_rubylibdir} \
+	sitearchdir=$RPM_BUILD_ROOT%{ruby_archdir} \
+	RUBYARCHDIR=$RPM_BUILD_ROOT%{ruby_archdir}
 
 cp -a ri/ri/* $RPM_BUILD_ROOT%{ruby_ridir}
 
