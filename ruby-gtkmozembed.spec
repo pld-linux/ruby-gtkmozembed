@@ -14,10 +14,11 @@ Source0:	http://dl.sourceforge.net/ruby-gnome2/%{name}-%{version}.tar.gz
 URL:		http://ruby-gnome2.sourceforge.jp/
 BuildRequires:	mozilla-devel
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.263
+BuildRequires:	rpmbuild(macros) >= 1.277
 BuildRequires:	ruby-devel
 BuildRequires:	ruby-gnome2
 BuildRequires:	sed >= 4.0
+%ruby_mod_ver_requires_eq
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
