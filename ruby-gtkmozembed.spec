@@ -3,7 +3,7 @@
 #   - subpackages
 #
 Summary:	Gecko embedded object for Ruby/GNOME2
-Summary(pl.UTF-8):   Osadzony obiekt Gecko dla Ruby/GNOME2
+Summary(pl.UTF-8):	Osadzony obiekt Gecko dla Ruby/GNOME2
 Name:		ruby-gtkmozembed
 Version:	0.3.1
 Release:	1
