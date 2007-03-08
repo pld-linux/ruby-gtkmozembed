@@ -38,7 +38,7 @@ ruby extconf.rb
 rdoc -o rdoc
 rdoc --ri -o ri
 
-rm ri/ri/Gtk/cdesc-Gtk.yaml
+rm ri/Gtk/cdesc-Gtk.yaml
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -48,7 +48,7 @@ install -d $RPM_BUILD_ROOT{%{ruby_archdir},%{ruby_rubylibdir},%{ruby_ridir}}
 	sitearchdir=$RPM_BUILD_ROOT%{ruby_archdir} \
 	RUBYARCHDIR=$RPM_BUILD_ROOT%{ruby_archdir}
 
-cp -a ri/ri/* $RPM_BUILD_ROOT%{ruby_ridir}
+cp -a ri/* $RPM_BUILD_ROOT%{ruby_ridir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
